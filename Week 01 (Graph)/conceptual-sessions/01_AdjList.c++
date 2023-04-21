@@ -8,7 +8,7 @@ int main() {
     // node n = 9
     // edge e  = 9;
     // node value (u,v) will be between 1 to 9
-    int n = 9;
+    int n = 4;
 
     vector<int> adjList[maxN+1];
     int e;

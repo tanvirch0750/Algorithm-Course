@@ -61,6 +61,16 @@ int main() {
         adj_list[v].push_back(u);
     }
 
+    for(int i =0; i < nodes; i++){
+        cout << i << " --> ";
+        for(int j = 0; j < adj_list[i].size(); j++){
+            cout << adj_list[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << "bfs\n";
+
     int src = 0;
     bfs(src);
 

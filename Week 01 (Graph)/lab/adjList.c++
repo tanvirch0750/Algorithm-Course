@@ -14,13 +14,25 @@
 using namespace std;
 
 int main() {
-    int nodes = 4;
+    int nodes, edges;
+    cin >> nodes >> edges;
+    // vector<int> adj_list[nodes];
+    // adj_list[1] = {2, 3};
+    // adj_list[2] = {1, 4};
+    // adj_list[3] = {1, 4};
+    // adj_list[4] = {2, 3, 5, 6};
+    // adj_list[5] = {4};
+    // adj_list[6] = {4};
+    
+
     vector<int> adj_list[nodes];
 
-    adj_list[0] = {1};
-    adj_list[1] = {0,2,3};
-    adj_list[2] = {1,3};
-    adj_list[3] = {1,2};
+    for (int i = 0; i < edges; i++){
+        int u, v;
+        cin >> u >> v;
+        adj_list[u].push_back(v);
+        adj_list[v].push_back(u);
+    }
 
     for(int i =0; i < nodes; i++){
         cout << i << " --> ";
