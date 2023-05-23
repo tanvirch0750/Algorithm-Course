@@ -1,8 +1,4 @@
 // problem link - https://atcoder.jp/contests/dp/tasks/dp_a
-
-#include<bits/stdc++.h>
-using namespace std;
-const int N = 1e5 + 5;
 /*
 - state: stone(n) -> cost of reaching n-th stone from 1st stone
 - recurrance: stone(n) = min(  
@@ -11,6 +7,11 @@ const int N = 1e5 + 5;
                         )
 - base case: stone(1) = 0
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 5;
+
 int h[N];
 int dp[N];
 
