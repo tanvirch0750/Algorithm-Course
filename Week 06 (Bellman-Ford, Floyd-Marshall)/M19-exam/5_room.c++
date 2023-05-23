@@ -1,115 +1,72 @@
 #include <iostream>
-#include <vector>
 #include <queue>
-#include <algorithm>
-
 using namespace std;
 
-const int maxN = 1010;
+const int maxN = 1000;
 
-char grid[maxN][maxN];
-bool visited[maxN][maxN];
-pair<int, int> parent[maxN][maxN];
+// Function to perform BFS traversal
+int bfs(int startRow, int startCol, int n, int m, char grid[][maxN], bool visited[][maxN]) {
+    // Arrays to define the possible movements (up, down, left, right)
+    int rowMoves[] = {-1, 1, 0, 0};
+    int colMoves[] = {0, 0, -1, 1};
 
-int dx[4] = {1, 0, -1, 0};
-int dy[4] = {0, 1, 0, -1};
-
-
-void bfs(int x, int y, int n, int m)
-{
     queue<pair<int, int>> q;
-    q.push({x, y});
-    visited[x][y] = true;
-    parent[x][y] = {-1, -1};
+    q.push({startRow, startCol});
+    visited[startRow][startCol] = true;
+    int roomSize = 0;
 
-    while (!q.empty())
-    {
-        pair<int, int> u = q.front();
+    while (!q.empty()) {
+        int currentRow = q.front().first;
+        int currentCol = q.front().second;
         q.pop();
-        for (int i = 0; i < 4; i++)
-        {
-            int dx_, dy_;
-            dx_ = u.first + dx[i];
-            dy_ = u.second + dy[i];
+        roomSize++;
 
-            if (dx_ >= 1 && dx_ <= n && dy_ >= 1 && dy_ <= m && !visited[dx_][dy_] && grid[dx_][dy_] != '#')
-            {
-                visited[dx_][dy_] = true;
-                q.push({dx_, dy_});
-                parent[dx_][dy_] = u;
-            }
-        }
-    }
-}
+        // Check all possible movements from the current cell
+        for (int i = 0; i < 4; i++) {
+            int newRow = currentRow + rowMoves[i];
+            int newCol = currentCol + colMoves[i];
 
-int countRoomsAndLongestRoom(int n, int m)
-{
-    int numRooms = 0;
-    int longestRoom = 0;
-
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= m; j++)
-        {
-            if (!visited[i][j] && grid[i][j] != '#')
-            {
-                int roomSize = 0;
-                bfs(i, j, n, m);
-                numRooms++;
-                
-                // Traverse the visited cells to count the size of the room
-                for (int x = 1; x <= n; x++)
-                {
-                    for (int y = 1; y <= m; y++)
-                    {
-                        if (visited[x][y])
-                        {
-                            roomSize++;
-                            longestRoom = max(longestRoom, roomSize);
-                        }
-                    }
-                }
+            // Check if the new cell is valid (within map boundaries and not a wall)
+            if (newRow >= 0 && newRow < n && newCol >= 0 && newCol < m && grid[newRow][newCol] == '.' && !visited[newRow][newCol]) {
+                q.push({newRow, newCol});
+                visited[newRow][newCol] = true;
             }
         }
     }
 
-    return longestRoom;
+    return roomSize;
 }
 
-int main()
-{
+int main() {
     int n, m;
     cin >> n >> m;
-    int start_x, start_y, end_x, end_y;
 
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= m; j++)
-        {
+    char grid[maxN][maxN];
+    bool visited[maxN][maxN] = {false};
+
+    // Read the grid
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cin >> grid[i][j];
-            if (grid[i][j] == 'A')
-            {
-                start_x = i;
-                start_y = j;
-            }
-            if (grid[i][j] == '.')
-            {
-                end_x = i;
-                end_y = j;
+        }
+    }
+
+    int numRooms = 0;
+    int maxRoomSize = 0;
+
+    // Traverse the grid and find the rooms
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (grid[i][j] == '.' && !visited[i][j]) {
+                numRooms++;
+                int roomSize = bfs(i, j, n, m, grid, visited);
+                maxRoomSize = max(maxRoomSize, roomSize);
             }
         }
     }
 
-    bfs(start_x, start_y, n, m);
-
-    if (visited[end_x][end_y])
-    {
-        cout << "YES" << '\n';
-        cout << countRoomsAndLongestRoom(n, m) << '\n';
-
-    }
-    else
-        cout << "NO" << '\n';
+    cout << numRooms << endl;
+    cout << maxRoomSize << endl;
 
     return 0;
 }

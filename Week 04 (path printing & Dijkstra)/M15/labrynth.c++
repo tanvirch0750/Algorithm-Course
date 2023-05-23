@@ -9,7 +9,7 @@ pair<int, int> parent[maxN][maxN];
 
 int dx[4] = { 1,0,-1,0 };
 int dy[4] = { 0,1,0,-1 };
-char dir[4] = { 'D','R','U','L' };
+
 
 void bfs(int x, int y, int n, int m)
 {
