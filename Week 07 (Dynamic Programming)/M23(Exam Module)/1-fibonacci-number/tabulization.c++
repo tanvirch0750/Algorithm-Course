@@ -6,7 +6,6 @@ int dp[N];
 
 int main() {
     int n;
-    cout << "Enter the value of n: ";
     cin >> n;
 
     // 1. base cases

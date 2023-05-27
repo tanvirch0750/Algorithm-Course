@@ -36,8 +36,9 @@ int main() {
     int n;
     cin >> n;
 
+   // mark all states as unvisited
    for(int i = 1 ; i <= n ; i++) {
-        dp[i] = -1;  // mark all states as unvisited
+        dp[i] = -1;  
     }
 
     cout << calcOp(n) << endl;
