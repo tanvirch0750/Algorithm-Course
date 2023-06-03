@@ -7,7 +7,7 @@ const long long INF = 1e18;
 
 vector< pair<int, int> >adj_list[N];
 
-int visited[N], 
+int visited[N];
 int nodes, edges;
 
 long long d[N];
@@ -58,27 +58,43 @@ int main() {
         adj_list[v].push_back({ u, w });
     }
 
-    int src = 1;
+    int src = 2;
     dijkstra(src);
 
 
     for(int i = 1 ; i <= nodes ; i++) {
-        cout << d[i] << " ";
+        if(i == 5) continue;
+        cout << i << " " << d[i] << " ";
+         cout<<endl;
     }
-    cout<<endl;
+   
     cout<<endl;
 }
+/*
+7 12
+1 2 3
+1 3 22
+1 6 3
+1 8 3
+1 4 1
+2 3 18
+3 7 1
+3 4 2
+4 8 10
+4 7 4
+6 8 2
+6 7 2
 /*
    
     - first all the node with distance array will be infinity
        |      |      |      |      |      |      |      |      | 
       inf    inf    inf     0     inf    inf    inf    inf    inf    
-       A      B      C      E      F      G      H      I      J
+       1      B      C      E      F      G      H      I      J
        |      |      |      |      |      |      |      |      |
 
     - distance[E] = 0
 
-     priority queue = [{0, 4}]
+     priority queue = [{0, E}]
      Visited node = [A(0), B(0), C(0), E(0), F(0), G(0), H(0), I(0), J(0)]
 
      - Now pop the first element from q, and select the node (E), its not visited, so make it  visited.

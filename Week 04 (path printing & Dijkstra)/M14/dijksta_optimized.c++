@@ -72,7 +72,7 @@ int main() {
         adj_list[v].push_back({ u, w });
     }
 
-    int src = 1;
+    int src = 2;
     dijkstra(src);
 
     if(visited[nodes] == 0) {

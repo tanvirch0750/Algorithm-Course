@@ -1,6 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
-const int N = 101;
 /*
 
 - fib(n) -> calculates the nth fibonacci number
@@ -9,6 +6,12 @@ const int N = 101;
 
 
 */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 101;
+
 
 int dp[N]; // dp array
 

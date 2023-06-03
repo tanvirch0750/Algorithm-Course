@@ -1,10 +1,4 @@
 // problem link - https://atcoder.jp/contests/dp/tasks/dp_b
-
-#include<bits/stdc++.h>
-using namespace std;
-const int N = 1e5 + 5;
-const int INF = 2e9;
-
 /*
 - state: stone(n) -> cost of reaching n-th stone from 1st stone
 - recurrance: stone(n) = for i = 1 to  k: 
@@ -23,6 +17,13 @@ i = 2
 2  <=====(2-1), (2-2) ... (2-4)
           1,   0 , -1,  -2
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 5;
+const int INF = 2e9;
+
+
 
 int h[N], dp[N];
 int n, k;
