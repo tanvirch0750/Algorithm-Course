@@ -1,6 +1,3 @@
-#include<bits/stdc++.h>
-using namespace std;
-const int N = 3003;
 /*
 - state: LCS(i, j) -> Length of longest common subsequence 
                        between strings s[i..n] and t[j..m]
@@ -11,6 +8,12 @@ const int N = 3003;
 - base: LCS(i, m) = 0
         LCS(n, j) = 0
 */
+
+
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 3003;
+
 int dp[N][N];
 int n, m;
 string s, t;
