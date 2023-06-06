@@ -1,27 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-const int N = 1e5;
-
-int visited[N];
-
-vector<int>adj_list[N];
-
-/*          1
-  adj_list[node] -> 2, 4, 5
-  that means, 1 connected with 2, 4 and 5
-*/
-
-void dfs(int node){
-    cout << node << endl;
-    visited[node] = 1;
-
-    for(int adj_node: adj_list[node]){
-        if(visited[adj_node] == 0){
-            dfs(adj_node);
-        }
-    }
-}
-
 /*
    example graph:
    
@@ -44,6 +20,35 @@ void dfs(int node){
    2 4
    5 4
 */
+
+/*          1
+  adj_list[node] -> 2, 4, 5
+  that means, 1 connected with 2, 4 and 5
+*/
+
+
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e5;
+
+int visited[N];
+
+vector<int>adj_list[N];
+
+
+
+void dfs(int node){
+    cout << node << endl;
+    visited[node] = 1;
+
+    for(int adj_node: adj_list[node]){
+        if(visited[adj_node] == 0){
+            dfs(adj_node);
+        }
+    }
+}
+
+
 
 int main() {
     int nodes, edges;

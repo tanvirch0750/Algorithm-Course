@@ -1,3 +1,12 @@
+/*
+    w
+u -----> v
+  -----> x
+    a
+u ->  (v, w), (x, a)
+*/
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -9,13 +18,6 @@ vector< pair<int, int> >adj_list[N];
 int d[N], visited[N];
 int nodes, edges;
 
-/*
-    w
-u -----> v
-  -----> x
-    a
-u ->  (v, w), (x, a)
-*/
 
 void dijkstra(int src) {
     for(int i = 1 ; i <= nodes ; i++) {

@@ -3,8 +3,6 @@
 
 // Equal sum partition - https://leetcode.com/problems/partition-equal-subset-sum/
 
-#include<bits/stdc++.h>
-using namespace std;
 /*
 - state: fun(n, target) -> returns 1 if it is possible to create a subset from numbers
          1 to n and form the sum "target"
@@ -15,6 +13,10 @@ using namespace std;
 - base_case: fun(0, target) -> 1 if target == 0
                                else 0
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+
 const int N = 101;
 const int M = 1e5 + 5;
 int nums[N];
